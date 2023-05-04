@@ -33,3 +33,9 @@ $StudioCeR-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($StudioCeR-theme);
 
+.mat-mdc-menu-content{
+  background-color: #880E4F !important;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+}
