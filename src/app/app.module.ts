@@ -15,13 +15,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { FooterComponent } from './components/footer/footer.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { CoursesComponent } from './components/courses/courses.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FooterComponent,
-    MenuComponent
+    MenuComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
