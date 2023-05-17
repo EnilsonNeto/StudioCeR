@@ -81,7 +81,10 @@ mat-form-field{
 
     .main{
         padding: 0 2rem 0 2rem;
-        height: 48rem!
+    }
+
+    .background{
+     height: 45rem;
     }
 
     .calendario-dias div {
