@@ -12,6 +12,12 @@
     height: 80px;
 }
 
+button{
+    background-color: transparent;
+    color: #fff;
+    border: 0;
+}
+
 .leftBox {
     display: flex;
     flex-direction: row;

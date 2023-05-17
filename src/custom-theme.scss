@@ -39,3 +39,6 @@ $StudioCeR-theme: mat.define-light-theme((
   color: #fff;
   text-decoration: none;
 }
+.mat-horizontal-stepper-header .mat-step-icon{
+  display: none !important;
+}

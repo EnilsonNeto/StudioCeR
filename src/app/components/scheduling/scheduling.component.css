@@ -1,0 +1,76 @@
+.background{
+    overflow-y: auto;
+    height: 55rem;
+}
+
+.main {
+    padding: 1rem 2rem 1rem 2rem;
+    color: #fff;
+}
+
+.main h1{
+    color: #000;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 15px;
+}
+
+.calendario-dias {
+    display: grid;
+    margin-top: 2px;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    background-color: #880E4F;
+    border: 3px solid #000;
+}
+
+h4{
+    font-size: 1rem;
+    text-align: center;
+}
+
+.calendario-dias div {
+    border: 1px solid #ccc;
+    font-size: 24px;
+    padding: 20px;
+}
+
+mat-form-field{
+    padding-right: 15px;
+}
+
+.calendario-titulo {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #880E4F;
+    border: 3px solid #000000;
+}
+
+.calendario-titulo-mes-ano {
+    margin: 0 2rem 0 2rem;
+}
+
+
+.teste:hover {
+    transition: 0.5s;
+    background-color: #680a3c;
+    cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    .calendario-dias{
+        overflow: auto;
+    }
+
+    .main{
+        padding: 0 2rem 0 2rem;
+    }
+
+    .calendario-dias div {
+        width: 6rem;
+    }
+}
