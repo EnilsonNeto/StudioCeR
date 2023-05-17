@@ -5,13 +5,10 @@
     padding: 0;
 }
 
-
-
 .newBox {
     align-items: center;
     text-align: center;
 }
-
 
 .welcome h1 {
     font-family: 'Jost', sans-serif;
@@ -36,9 +33,7 @@
     font-size: 4rem;
     font-style: normal;
     font-weight: 400;
-
     color: #880E4F;
-
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
 }
 
@@ -124,7 +119,7 @@ button {
     width: 100%;
 }
 
-.boxInit mat-divider{
+.boxInit mat-divider {
     border: 1px solid #880E4F;
     border-width: 3px;
     height: 35rem;
@@ -134,7 +129,7 @@ button {
     border-radius: 3px;
 }
 
-.midBox{
+.midBox {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,7 +144,7 @@ button {
     background-color: #fff;
 }
 
-a{
+a {
     text-decoration: none;
     color: #fff;
 }
@@ -158,59 +153,62 @@ a{
     .sizing img {
         display: none;
     }
-    
-} 
+
+}
+
 @media (max-width: 1000px) {
-    mat-divider{
+    mat-divider {
         display: none;
     }
-    .leftBox{
+
+    .leftBox {
         width: 100%;
     }
-    .newBox h1{
+
+    .newBox h1 {
         font-size: 5rem;
     }
 
 }
 
-@media (max-width: 800px){
+@media (max-width: 800px) {
 
 
-    .newBox h1{
+    .newBox h1 {
         display: none;
     }
 
 
-    .helloPeople{
-    background-image: url('src/assets/images/duo3.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-top: 4rem;
-    margin-bottom: 3rem;
+    .helloPeople {
+        background-image: url('src/assets/images/duo3.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-top: 4rem;
+        margin-bottom: 3rem;
     }
 
-    .helloPeople h4{
+    .helloPeople h4 {
         font-size: 1.2rem;
         width: 100%;
     }
 
-    .imgCarossel{
+    .imgCarossel {
         width: auto;
     }
 
-    .footer{
+    .footer {
         width: 100%;
     }
 
-    .interactiveAbout img{
+    .interactiveAbout img {
         width: 100%;
     }
 
-    .boxAbout h4{
+    .boxAbout h4 {
         text-align: center;
     }
 
-    .boxAbout p{
+    .boxAbout p {
         font-size: 1.2rem;
         padding: 5px;
         text-align: center;
