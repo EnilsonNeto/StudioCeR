@@ -38,7 +38,7 @@
                         <form class="user" id="user2" [formGroup]="formUser">
                             <mat-form-field>
                                 <input matInput name="date" [value]="diaSelecionado | date : 'dd/MM/yyyy'"
-                                    placeholder="Data" formControlName="data" maxlength="16" #data readonly required>
+                                    placeholder="Data" formControlName="data" maxlength="16" #data readonly >
                             </mat-form-field>
                             <mat-form-field>
                                 <input matInput name="name" placeholder="Primeiro Nome" formControlName="name" required>
@@ -59,7 +59,6 @@
                                     <mat-option value="Sobrancelha">Sobrancelha</mat-option>
                                 </mat-select>
                             </mat-form-field>
-
                             <mat-form-field class="topMargin">
                                 <mat-label>Profissional</mat-label>
                                 <mat-select name="professional" #testando formControlName="professional" required>
@@ -76,7 +75,7 @@
                                 </div>
                                 <div class="btnGroup">
                                     <button class="bttn-Color button-align-right" id="userSubmit" mat-flat-button
-                                        mat-dialog-close color="primary" value="Sign Up"
+                                        mat-dialog-close color="accent" value="Sign Up"
                                         (click)="send(data.value, testando.value)">
                                         Concluir
                                     </button>

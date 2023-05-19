@@ -33,6 +33,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { ModalSucessComponent } from './shared/modal-sucess/modal-sucess.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -42,7 +43,8 @@ registerLocaleData(localePt);
     FooterComponent,
     MenuComponent,
     CoursesComponent,
-    SchedulingComponent
+    SchedulingComponent,
+    ModalSucessComponent
   ],
   imports: [
     HttpClientModule,

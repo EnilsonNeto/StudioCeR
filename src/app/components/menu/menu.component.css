@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 .sizing img {
@@ -115,6 +116,18 @@ a:hover{
         height: 0;
       }
     
+      .navMenu2{
+        padding: 15px;
+        border-radius: 5px;
+      }
+
+      li{
+        margin-bottom: 8px;
+      }
+
+      a{
+        font-family: 'Jost', sans-serif;
+      }
 } 
 
 @media (max-width: 800px){
