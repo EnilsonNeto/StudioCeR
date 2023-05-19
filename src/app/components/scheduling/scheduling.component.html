@@ -1,90 +1,91 @@
 <div class="background">
     <div class="main">
         <h1>Ola! Faça o seu Agendamento</h1>
-        <div class="sizing">
-            <div class="calendario-titulo">
-                <div>
-                    <button (click)="alterarMes(-1)">anterior</button>
+        <div class="box-select">
+            <div class="sizing">
+                <div class="calendario-titulo">
+                    <div>
+                        <button (click)="alterarMes(-1)"><mat-icon>fast_rewind</mat-icon></button>
+                    </div>
+                    <div class="calendario-titulo-mes-ano">
+                        {{dataAtual | date : 'MMM yyyy'}}
+                    </div>
+                    <div>
+                        <button (click)="alterarMes(+1)"><mat-icon>fast_forward</mat-icon></button>
+                    </div>
                 </div>
-                <div class="calendario-titulo-mes-ano">
-                    {{dataAtual | date : 'MMM yyyy'}}
-                </div>
-                <div>
-                    <button (click)="alterarMes(+1)">proximo</button>
-                </div>
-            </div>
-            
-            <div class="calendario-dias">
+
+                <div class="calendario-dias">
                     <ng-container *ngFor="let dia of diasCalendario; let i = index">
                         <div *ngIf="i < 7" class="semanal-name">
                             {{ dia | date: 'EEEE' }}
                         </div>
                     </ng-container>
-                <div *ngFor="let dia of diasCalendario; let i = index" class="calendario-dia"
-                [class.calendario-quebrar-linha]="i % 7 === 0"
-                [class.calendario-dia-nao-faz-parte-mes-atual]="dataAtual.getMonth() !== dia.getMonth()"
-                (click)="selecionarDia(dia)" class="teste">
-                {{dia | date : 'dd'}}
+                    <div *ngFor="let dia of diasCalendario; let i = index" class="calendario-dia"
+                        [class.calendario-quebrar-linha]="i % 7 === 0"
+                        [class.calendario-dia-nao-faz-parte-mes-atual]="dataAtual.getMonth() !== dia.getMonth()"
+                        [class.disabled]="dia < today" (click)="selecionarDia(dia)" class="teste">
+                        {{dia | date : 'dd'}}
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
-        <div class="box-select">
-            <mat-horizontal-stepper>
-                <mat-step [stepControl]="formUser">
-                    <div class="content">
-                        <div class="section">
-                            <form class="user" id="user2" [formGroup]="formUser">
-                                <mat-form-field>
-                                    <input matInput name="date" [value]="diaSelecionado | date : 'dd/MM/yyyy'"
-                                        placeholder="Data" formControlName="data" maxlength="16" #data readonly required>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput name="name" placeholder="Primeiro Nome" formControlName="name"
-                                        required>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput name="surname" placeholder="SobreNome" formControlName="surname"
-                                        required>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput name="number" placeholder="Telefone" formControlName="number"
-                                        maxlength="32" required>
-                                </mat-form-field>
-                                <mat-form-field class="topMargin">
-                                    <mat-label>Procedimento</mat-label>
-                                    <mat-select name="process" formControlName="process" required>
-                                        <mat-option value="Epilação">Epilação</mat-option>
-                                        <mat-option value="Plastica dos Pés">Plastica dos Pés</mat-option>
-                                        <mat-option value="Sobrancelha">Sobrancelha</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
+        <mat-horizontal-stepper>
+            <mat-step [stepControl]="formUser">
+                <div class="content">
+                    <div class="section">
+                        <form class="user" id="user2" [formGroup]="formUser">
+                            <mat-form-field>
+                                <input matInput name="date" [value]="diaSelecionado | date : 'dd/MM/yyyy'"
+                                    placeholder="Data" formControlName="data" maxlength="16" #data readonly required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput name="name" placeholder="Primeiro Nome" formControlName="name" required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput name="surname" placeholder="SobreNome" formControlName="surname"
+                                    required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput name="number" placeholder="Telefone" formControlName="number"
+                                    maxlength="32" required>
+                            </mat-form-field>
+                            <mat-form-field class="topMargin">
+                                <mat-label>Procedimento</mat-label>
+                                <mat-select name="process" formControlName="process" required>
+                                    <mat-option value="Epilação">Epilação</mat-option>
+                                    <mat-option value="Plastica dos Pés">Plastica dos Pés</mat-option>
+                                    <mat-option value="Sobrancelha">Sobrancelha</mat-option>
+                                </mat-select>
+                            </mat-form-field>
 
-                                <mat-form-field class="topMargin">
-                                    <mat-label>Profissional</mat-label>
-                                    <mat-select name="professional" #testando formControlName="professional" required>
-                                        <mat-option *ngIf="formUser.controls['process'].value === 'Sobrancelha'"
-                                            value="Camille">Camille</mat-option>
-                                        <mat-option *ngIf="formUser.controls['process'].value !== 'Sobrancelha'"
-                                            value="Renee">Renee</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                                <div class="btnGroup row">
-                                    <div class="btnGroup">
-                                        <button type="button" class="bttn-Color2" mat-flat-button
-                                            matStepperPrevious mat-dialog-close>Voltar</button>
-                                    </div>
-                                    <div class="btnGroup">
-                                        <button class="bttn-Color button-align-right" id="userSubmit" mat-flat-button
-                                            mat-dialog-close color="primary" value="Sign Up" (click)="send(data.value, testando.value)">
-                                            Concluir
-                                        </button>
-                                    </div>
+                            <mat-form-field class="topMargin">
+                                <mat-label>Profissional</mat-label>
+                                <mat-select name="professional" #testando formControlName="professional" required>
+                                    <mat-option *ngIf="formUser.controls['process'].value === 'Sobrancelha'"
+                                        value="Camille">Camille</mat-option>
+                                    <mat-option *ngIf="formUser.controls['process'].value !== 'Sobrancelha'"
+                                        value="Renee">Renee</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <div class="btnGroup row">
+                                <div class="btnGroup">
+                                    <button type="button" class="bttn-Color2" mat-flat-button matStepperPrevious
+                                        mat-dialog-close>Voltar</button>
                                 </div>
-                            </form>
-                        </div>
+                                <div class="btnGroup">
+                                    <button class="bttn-Color button-align-right" id="userSubmit" mat-flat-button
+                                        mat-dialog-close color="primary" value="Sign Up"
+                                        (click)="send(data.value, testando.value)">
+                                        Concluir
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </mat-step>
-            </mat-horizontal-stepper>
-        </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
     </div>
 </div>

@@ -9,14 +9,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
 })
 export class SchedulingComponent {
+  today: Date = new Date();
   dataAtual: Date = new Date();
   diasCalendario: Date[] = [];
   diaSelecionado: Date | null = null;
   nameFromTable: any;
   formUser!: FormGroup;
   formData: any;
-  combinedFormGroup: any
-  autorization = { 'Authorization': 'Bearer key5fJDD8QhJcYtU1' }
+  combinedFormGroup: any;
+  autorization = { 'Authorization': 'Bearer key5fJDD8QhJcYtU1' };
   selectedOption: any;
   teste2: any;
 
@@ -33,12 +34,18 @@ export class SchedulingComponent {
 
   ngOnInit() {
     this.construirCalendario();
-
   }
 
   selecionarDia(dia: Date) {
+  const mesAtual = this.dataAtual.getMonth();
+  const anoAtual = this.dataAtual.getFullYear();
+  const mesSelecionado = dia.getMonth();
+  const anoSelecionado = dia.getFullYear();
+
+  if (anoSelecionado > anoAtual || (anoSelecionado === anoAtual && mesSelecionado >= mesAtual)) {
     this.diaSelecionado = dia;
   }
+}
 
   createDataUser(data: any) {
     this.formData = this.combinedFormGroup = Object.assign({}, this.formUser.value);
