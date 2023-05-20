@@ -54,20 +54,19 @@
                             <mat-form-field class="topMargin">
                                 <mat-label>Procedimento</mat-label>
                                 <mat-select name="process" formControlName="process" required>
-                                    <mat-option value="Epilação">Epilação</mat-option>
-                                    <mat-option value="Plastica dos Pés">Plastica dos Pés</mat-option>
-                                    <mat-option value="Sobrancelha">Sobrancelha</mat-option>
+                                  <mat-option value="Epilação">Epilação</mat-option>
+                                  <mat-option value="Plastica dos Pés">Plastica dos Pés</mat-option>
+                                  <mat-option value="Sobrancelha">Sobrancelha</mat-option>
                                 </mat-select>
-                            </mat-form-field>
-                            <mat-form-field class="topMargin">
+                              </mat-form-field>
+                              
+                              <mat-form-field class="topMargin">
                                 <mat-label>Profissional</mat-label>
                                 <mat-select name="professional" #testando formControlName="professional" required>
-                                    <mat-option *ngIf="formUser.controls['process'].value === 'Sobrancelha'"
-                                        value="Camille">Camille</mat-option>
-                                    <mat-option *ngIf="formUser.controls['process'].value !== 'Sobrancelha'"
-                                        value="Renee">Renee</mat-option>
+                                  <mat-option [value]="'Renee'" *ngIf="formUser.controls['process'].value !== 'Sobrancelha'">Renee</mat-option>
+                                  <mat-option [value]="'Camille'" *ngIf="formUser.controls['process'].value === 'Sobrancelha'">Camille</mat-option>
                                 </mat-select>
-                            </mat-form-field>
+                              </mat-form-field>
                             <div class="btnGroup row">
                                 <div class="btnGroup">
                                     <button type="button" class="bttn-Color2" mat-flat-button matStepperPrevious

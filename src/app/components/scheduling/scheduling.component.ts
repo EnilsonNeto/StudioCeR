@@ -23,6 +23,10 @@ export class SchedulingComponent {
   teste2: any;
 
   constructor(private http: HttpClient) {
+  }
+
+  ngOnInit() {
+    this.construirCalendario();
     this.formUser = new FormGroup({
       data: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required]),
@@ -31,10 +35,13 @@ export class SchedulingComponent {
       professional: new FormControl('', [Validators.required]),
       process: new FormControl('', [Validators.required]),
     });
-  }
-
-  ngOnInit() {
-    this.construirCalendario();
+    this.formUser.controls['process'].valueChanges.subscribe((value) => {
+      if (value === 'Sobrancelha') {
+        this.formUser.controls['professional'].setValue('Camille');
+      } else {
+        this.formUser.controls['professional'].setValue('Renee');
+      }
+    });
   }
 
   selecionarDia(dia: Date) {
