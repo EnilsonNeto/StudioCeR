@@ -22,6 +22,16 @@ export class SchedulingComponent {
   autorization = { 'Authorization': 'Bearer key5fJDD8QhJcYtU1' };
   selectedOption: any;
   disabled: boolean = false;
+  selectedProcedures: string[] = [];
+  selectedProfessional: string = '';
+  procedureProfessionals: { [key: string]: string[] } = {
+    Epilação: ['Renee'],
+    'Plastica dos Pés': ['Renee'],
+    Sobrancelha: ['Renee', 'Camille'],
+    Dermaplaning: ['Camille'],
+    'Lash Lifting': ['Camille'],
+    'Extensão de cílios': ['Camille']
+  };
 
   constructor(private http: HttpClient, public dialog: MatDialog) {
   }
@@ -45,6 +55,35 @@ export class SchedulingComponent {
     });
   }
 
+  onProfessionalChange() {
+    this.selectedProfessional = this.formUser.get('professional')?.value;
+  }
+
+  adicionarProcedimentoProfissional() {
+    const newProcedureControl = new FormControl('', [Validators.required]);
+    this.formUser.addControl(`procedure${this.selectedProcedures.length}`, newProcedureControl);
+    this.selectedProcedures.push(`procedure${this.selectedProcedures.length}`);
+    this.formUser.addControl(`professional${this.selectedProcedures.length}`, new FormControl('', [Validators.required]));
+  }
+
+  getAvailableProfessionals(procedure?: string): string[] {
+    if (procedure) {
+      return this.procedureProfessionals[procedure] || [];
+    } else {
+      const selectedProcedure = this.formUser.get('process')?.value;
+      return this.procedureProfessionals[selectedProcedure] || [];
+    }
+  }
+
+  getAvailableProceduresForProfessional(professional: string): string[] {
+    const availableProcedures: string[] = [];
+    const procedures = this.procedureProfessionals[professional];
+    if (procedures) {
+      availableProcedures.push(...procedures);
+    }
+    return availableProcedures;
+  }
+
   selecionarDia(dia: Date) {
     const mesAtual = this.dataAtual.getMonth();
     const anoAtual = this.dataAtual.getFullYear();
@@ -56,6 +95,8 @@ export class SchedulingComponent {
     }
   }
 
+  selectedProfessionalValue: any
+
   createDataUser(data: any) {
     this.formData = this.combinedFormGroup = Object.assign({}, this.formUser.value);
 
@@ -64,7 +105,9 @@ export class SchedulingComponent {
       return;
     }
 
-    console.log(this.nameFromTable);
+    const selectedProcedureValues = this.selectedProcedures.map((procedure) => this.formUser.get(procedure)?.value);
+    this.selectedProfessionalValue = this.formUser.get('professional')?.value;
+
 
     const newUser = {
       fields: {
@@ -72,7 +115,7 @@ export class SchedulingComponent {
         name: this.formUser.value.name,
         surname: this.formUser.value.surname,
         number: this.formUser.value.number,
-        procedimento: this.formUser.value.process,
+        procedimento: selectedProcedureValues,
       },
     };
 
