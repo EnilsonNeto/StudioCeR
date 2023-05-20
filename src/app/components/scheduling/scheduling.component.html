@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="btnGroup">
                                     <button class="bttn-Color button-align-right" id="userSubmit" mat-flat-button
-                                        mat-dialog-close color="accent" value="Sign Up"
+                                        mat-dialog-close color="accent" value="Sign Up" [disabled]="isInputEmpty()"
                                         (click)="send(data.value, testando.value)">
                                         Concluir
                                     </button>

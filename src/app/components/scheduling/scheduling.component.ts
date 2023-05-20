@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, LOCALE_ID } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-scheduling',
@@ -37,15 +38,15 @@ export class SchedulingComponent {
   }
 
   selecionarDia(dia: Date) {
-  const mesAtual = this.dataAtual.getMonth();
-  const anoAtual = this.dataAtual.getFullYear();
-  const mesSelecionado = dia.getMonth();
-  const anoSelecionado = dia.getFullYear();
+    const mesAtual = this.dataAtual.getMonth();
+    const anoAtual = this.dataAtual.getFullYear();
+    const mesSelecionado = dia.getMonth();
+    const anoSelecionado = dia.getFullYear();
 
-  if (anoSelecionado > anoAtual || (anoSelecionado === anoAtual && mesSelecionado >= mesAtual)) {
-    this.diaSelecionado = dia;
+    if (anoSelecionado > anoAtual || (anoSelecionado === anoAtual && mesSelecionado >= mesAtual)) {
+      this.diaSelecionado = dia;
+    }
   }
-}
 
   createDataUser(data: any) {
     this.formData = this.combinedFormGroup = Object.assign({}, this.formUser.value);
@@ -86,6 +87,13 @@ export class SchedulingComponent {
     }
   }
 
+  isInputEmpty(): boolean {
+    return this.formUser.get('name')?.value
+      && this.formUser.get('surname')?.value
+      && this.formUser.get(['number'])?.value
+      && this.formUser.get('process')?.value === '';
+  }
+
   send(data: any, testando: any) {
     this.nameFromTable = testando;
     this.combinedFormGroup = Object.assign({}, this.formUser.value);
@@ -94,6 +102,13 @@ export class SchedulingComponent {
       return;
     } else {
       this.createDataUser(data);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Agendamento realizado com sucesso, em breve entraremos em contato!',
+        showConfirmButton: true,
+        timer: 5000
+      })
     }
   }
 
