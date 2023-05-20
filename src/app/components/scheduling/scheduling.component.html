@@ -38,7 +38,7 @@
                         <form class="user" id="user2" [formGroup]="formUser">
                             <mat-form-field>
                                 <input matInput name="date" [value]="diaSelecionado | date : 'dd/MM/yyyy'"
-                                    placeholder="Data" formControlName="data" maxlength="16" #data readonly >
+                                    placeholder="Data" formControlName="data" maxlength="16" #data readonly>
                             </mat-form-field>
                             <mat-form-field>
                                 <input matInput name="name" placeholder="Primeiro Nome" formControlName="name" required>
@@ -54,19 +54,27 @@
                             <mat-form-field class="topMargin">
                                 <mat-label>Procedimento</mat-label>
                                 <mat-select name="process" formControlName="process" required>
-                                  <mat-option value="Epilação">Epilação</mat-option>
-                                  <mat-option value="Plastica dos Pés">Plastica dos Pés</mat-option>
-                                  <mat-option value="Sobrancelha">Sobrancelha</mat-option>
+                                    <mat-option value="Epilação">Epilação</mat-option>
+                                    <mat-option value="Plastica dos Pés">Plastica dos Pés</mat-option>
+                                    <mat-option value="Sobrancelha">Sobrancelha</mat-option>
+                                    <mat-option value="Dermaplaning">Dermaplaning</mat-option>
+                                    <mat-option value="Lash Lifting">Lash Lifting</mat-option>
+                                    <mat-option value="Extensão de cílios">Extensão de cílios</mat-option>
                                 </mat-select>
-                              </mat-form-field>
-                              
-                              <mat-form-field class="topMargin">
+                            </mat-form-field>
+
+                            <mat-form-field class="topMargin">
                                 <mat-label>Profissional</mat-label>
-                                <mat-select name="professional" #testando formControlName="professional" required>
-                                  <mat-option [value]="'Renee'" *ngIf="formUser.controls['process'].value !== 'Sobrancelha'">Renee</mat-option>
-                                  <mat-option [value]="'Camille'" *ngIf="formUser.controls['process'].value === 'Sobrancelha'">Camille</mat-option>
+                                <mat-select name="professional" #professionalName formControlName="professional">
+                                    <mat-option value="Renee"
+                                        *ngIf="formUser.controls['process'].value !== 'Dermaplaning' && formUser.controls['process'].value !== 'Lash Lifting' && formUser.controls['process'].value !== 'Sobrancelha' && formUser.controls['process'].value !== 'Extensão de cílios'">
+                                        Renee</mat-option>
+                                    <mat-option value="Camille"
+                                        *ngIf="formUser.controls['process'].value === 'Dermaplaning' || formUser.controls['process'].value === 'Lash Lifting' || formUser.controls['process'].value === 'Sobrancelha' || formUser.controls['process'].value == 'Extensão de cílios'">
+                                        Camille</mat-option>
                                 </mat-select>
-                              </mat-form-field>
+                            </mat-form-field>
+
                             <div class="btnGroup row">
                                 <div class="btnGroup">
                                     <button type="button" class="bttn-Color2" mat-flat-button matStepperPrevious
@@ -75,7 +83,7 @@
                                 <div class="btnGroup">
                                     <button class="bttn-Color button-align-right" id="userSubmit" mat-flat-button
                                         mat-dialog-close color="accent" value="Sign Up" [disabled]="isInputEmpty()"
-                                        (click)="send(data.value, testando.value)">
+                                        (click)="send(data.value, professionalName.value)">
                                         Concluir
                                     </button>
                                 </div>

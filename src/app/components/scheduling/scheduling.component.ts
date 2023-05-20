@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, LOCALE_ID } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,9 +21,9 @@ export class SchedulingComponent {
   combinedFormGroup: any;
   autorization = { 'Authorization': 'Bearer key5fJDD8QhJcYtU1' };
   selectedOption: any;
-  teste2: any;
+  disabled: boolean = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -36,7 +37,7 @@ export class SchedulingComponent {
       process: new FormControl('', [Validators.required]),
     });
     this.formUser.controls['process'].valueChanges.subscribe((value) => {
-      if (value === 'Sobrancelha') {
+      if (value === 'Dermaplaning' || value === 'Lash Lifting' || value === 'Sobrancelha' || value === 'Extensão de cílios') {
         this.formUser.controls['professional'].setValue('Camille');
       } else {
         this.formUser.controls['professional'].setValue('Renee');
@@ -101,8 +102,8 @@ export class SchedulingComponent {
       && this.formUser.get('process')?.value === '';
   }
 
-  send(data: any, testando: any) {
-    this.nameFromTable = testando;
+  send(data: any, professionalName: any) {
+    this.nameFromTable = professionalName;
     this.combinedFormGroup = Object.assign({}, this.formUser.value);
     if (this.combinedFormGroup.invalid) {
       alert("Error: Invalid form data");
@@ -110,10 +111,9 @@ export class SchedulingComponent {
     } else {
       this.createDataUser(data);
       Swal.fire({
-        position: 'center',
         icon: 'success',
-        title: 'Agendamento realizado com sucesso, em breve entraremos em contato!',
-        showConfirmButton: true,
+        title: 'Agendamento realizado com sucesso!',
+        text: 'Entraremos em contato em breve...',
         timer: 5000
       })
     }
