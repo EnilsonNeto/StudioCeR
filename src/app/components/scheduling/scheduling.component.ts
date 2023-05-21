@@ -32,6 +32,8 @@ export class SchedulingComponent {
     'Lash Lifting': ['Camille'],
     'Extensão de cílios': ['Camille']
   };
+  selectedProfessionalValue: any;
+  camilleLimited: any;
 
   constructor(private http: HttpClient, public dialog: MatDialog) {
   }
@@ -60,10 +62,37 @@ export class SchedulingComponent {
   }
 
   adicionarProcedimentoProfissional() {
-    const newProcedureControl = new FormControl('', [Validators.required]);
-    this.formUser.addControl(`procedure${this.selectedProcedures.length}`, newProcedureControl);
-    this.selectedProcedures.push(`procedure${this.selectedProcedures.length}`);
-    this.formUser.addControl(`professional${this.selectedProcedures.length}`, new FormControl('', [Validators.required]));
+    if (this.formUser.value.professional === 'Camille') {
+      const limite = 4;
+
+      if (this.selectedProcedures.length < limite) {
+        const newProcedureControl = new FormControl('', [Validators.required]);
+        this.formUser.addControl(`procedure${this.selectedProcedures.length}`, newProcedureControl);
+        this.selectedProcedures.push(`procedure${this.selectedProcedures.length}`);
+        this.formUser.addControl(`professional${this.selectedProcedures.length}`, new FormControl('', [Validators.required]));
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Limite máximo de procedimentos atingido!',
+          timer: 1500
+        });
+      }
+    } else if (this.formUser.value.professional === 'Renee') {
+      const limite = 2;
+
+      if (this.selectedProcedures.length < limite) {
+        const newProcedureControl = new FormControl('', [Validators.required]);
+        this.formUser.addControl(`procedure${this.selectedProcedures.length}`, newProcedureControl);
+        this.selectedProcedures.push(`procedure${this.selectedProcedures.length}`);
+        this.formUser.addControl(`professional${this.selectedProcedures.length}`, new FormControl('', [Validators.required]));
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Limite máximo de procedimentos atingido!',
+          timer: 1500
+        });
+      }
+    }
   }
 
   removerProcedimentoProfissional(index: number) {
@@ -101,7 +130,7 @@ export class SchedulingComponent {
     }
   }
 
-  selectedProfessionalValue: any
+
 
   createDataUser(data: any) {
     this.formData = this.combinedFormGroup = Object.assign({}, this.formUser.value);
@@ -114,6 +143,7 @@ export class SchedulingComponent {
     const selectedProcedureValues = this.selectedProcedures.map((procedure) => this.formUser.get(procedure)?.value);
     this.selectedProfessionalValue = this.formUser.get('professional')?.value;
 
+    const formattedProcedureValues = selectedProcedureValues.join(', ');
 
     const newUser = {
       fields: {
@@ -121,7 +151,7 @@ export class SchedulingComponent {
         name: this.formUser.value.name,
         surname: this.formUser.value.surname,
         number: this.formUser.value.number,
-        procedimento: selectedProcedureValues,
+        procedimento: this.formUser.value.process + ', ' + JSON.stringify(formattedProcedureValues)
       },
     };
 
@@ -141,7 +171,8 @@ export class SchedulingComponent {
         }, error => {
           console.error(error);
         });
-    }
+      }
+      console.log(selectedProcedureValues);
   }
 
   isInputEmpty(): boolean {
@@ -167,6 +198,8 @@ export class SchedulingComponent {
       })
     }
   }
+
+  
 
   construirCalendario() {
     const ano = this.dataAtual.getFullYear();
