@@ -66,6 +66,12 @@ export class SchedulingComponent {
     this.formUser.addControl(`professional${this.selectedProcedures.length}`, new FormControl('', [Validators.required]));
   }
 
+  removerProcedimentoProfissional(index: number) {
+    this.formUser.removeControl(`procedure${index}`);
+    this.formUser.removeControl(`professional${index}`);
+    this.selectedProcedures.splice(index, 1);
+  }
+
   getAvailableProfessionals(procedure?: string): string[] {
     if (procedure) {
       return this.procedureProfessionals[procedure] || [];
@@ -156,7 +162,7 @@ export class SchedulingComponent {
       Swal.fire({
         icon: 'success',
         title: 'Agendamento realizado com sucesso!',
-        text: 'Entraremos em contato em breve...',
+        text: 'Entraremos em contato em breve, para marcamos o seu horário!',
         timer: 5000
       })
     }

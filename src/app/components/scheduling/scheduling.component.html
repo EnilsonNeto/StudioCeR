@@ -54,40 +54,58 @@
                             <mat-form-field class="topMargin">
                                 <mat-label>Procedimento</mat-label>
                                 <mat-select name="process" formControlName="process" required>
-                                  <mat-option value="Epilação">Epilação</mat-option>
-                                  <mat-option value="Plastica dos Pés">Plastica dos Pés</mat-option>
-                                  <mat-option value="Sobrancelha">Sobrancelha</mat-option>
-                                  <mat-option value="Dermaplaning">Dermaplaning</mat-option>
-                                  <mat-option value="Lash Lifting">Lash Lifting</mat-option>
-                                  <mat-option value="Extensão de cílios">Extensão de cílios</mat-option>
+                                    <mat-option value="Epilação">Epilação</mat-option>
+                                    <mat-option value="Plastica dos Pés">Plastica dos Pés</mat-option>
+                                    <mat-option value="Sobrancelha">Sobrancelha</mat-option>
+                                    <mat-option value="Dermaplaning">Dermaplaning</mat-option>
+                                    <mat-option value="Lash Lifting">Lash Lifting</mat-option>
+                                    <mat-option value="Extensão de cílios">Extensão de cílios</mat-option>
                                 </mat-select>
-                              </mat-form-field>
-                              
-                              <mat-form-field class="topMargin">
+                            </mat-form-field>
+
+                            <mat-form-field class="topMargin">
                                 <mat-label>Profissional</mat-label>
-                                <mat-select name="professional" #professionalName formControlName="professional" (selectionChange)="onProfessionalChange()">
-                                  <mat-option *ngFor="let professional of getAvailableProfessionals()" [value]="professional">
-                                    {{ professional }}
-                                  </mat-option>
+                                <mat-select name="professional" #professionalName formControlName="professional"
+                                    (selectionChange)="onProfessionalChange()">
+                                    <mat-option *ngFor="let professional of getAvailableProfessionals()"
+                                        [value]="professional">
+                                        {{ professional }}
+                                    </mat-option>
                                 </mat-select>
-                              </mat-form-field>
-                              
-                              <div *ngFor="let procedure of selectedProcedures; let i = index">
-                                <mat-form-field class="topMargin">
-                                  <mat-label>Procedimento {{ i + 1 }}</mat-label>
-                                  <mat-select formControlName="procedure{{ i }}" required>
-                                        <mat-option value="Epilação" *ngIf="professionalName.value === 'Renee'">Epilação</mat-option>
-                                        <mat-option value="Plastica dos Pés" *ngIf="professionalName.value === 'Renee'">Plastica dos Pés</mat-option>
-                                        <mat-option value="Sobrancelha" *ngIf="professionalName.value === 'Camille'">Sobrancelha</mat-option>
-                                        <mat-option value="Dermaplaning" *ngIf="professionalName.value === 'Camille'">Dermaplaning</mat-option>
-                                        <mat-option value="Lash Lifting" *ngIf="professionalName.value === 'Camille'">Lash Lifting</mat-option>
-                                        <mat-option value="Extensão de cílios" *ngIf="professionalName.value === 'Camille'">Extensão de cílios</mat-option>
-                                  </mat-select>
-                                </mat-form-field>
-                              </div>
-                            <button mat-icon-button color="primary" (click)="adicionarProcedimentoProfissional()">
-                                <mat-icon>add</mat-icon>
-                            </button>
+                            </mat-form-field>
+                            <div class="align">
+                                <div *ngFor="let procedure of selectedProcedures; let i = index">
+                                    <mat-form-field class="topMargin">
+                                        <mat-label>Procedimento {{ i + 1 }}</mat-label>
+                                        <mat-select formControlName="procedure{{ i }}" required>
+                                            <mat-option value="Epilação"
+                                                *ngIf="professionalName.value === 'Renee'">Epilação</mat-option>
+                                            <mat-option value="Plastica dos Pés"
+                                                *ngIf="professionalName.value === 'Renee'">Plastica dos Pés</mat-option>
+                                            <mat-option value="Sobrancelha"
+                                                *ngIf="professionalName.value === 'Camille'">Sobrancelha</mat-option>
+                                            <mat-option value="Dermaplaning"
+                                                *ngIf="professionalName.value === 'Camille'">Dermaplaning</mat-option>
+                                            <mat-option value="Lash Lifting"
+                                                *ngIf="professionalName.value === 'Camille'">Lash Lifting</mat-option>
+                                            <mat-option value="Extensão de cílios"
+                                                *ngIf="professionalName.value === 'Camille'">Extensão de
+                                                cílios</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <button mat-icon-button color="primary" class="remove"
+                                        (click)="removerProcedimentoProfissional(i)">
+                                        <span class="material-icons">delete</span>
+                                    </button>
+                                </div>
+                                <div class="boxin">
+                                    <button mat-icon-button class="adicionar" (click)="adicionarProcedimentoProfissional()">
+                                        <mat-icon class="add">add</mat-icon> 
+                                    </button>
+                                    <p class="text-color">Adicionar Mais Um Procedimento*</p> 
+                                </div>
+                            </div>
+
                             <div class="btnGroup row">
                                 <div class="btnGroup">
                                     <button type="button" class="bttn-Color2" mat-flat-button matStepperPrevious
