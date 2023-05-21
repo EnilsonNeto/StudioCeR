@@ -76,8 +76,8 @@
                             <div class="align">
                                 <div *ngFor="let procedure of selectedProcedures; let i = index">
                                     <mat-form-field class="topMargin">
-                                        <mat-label>Procedimento {{ i + 1 }}</mat-label>
-                                        <mat-select formControlName="procedure{{ i }}" required>
+                                        <mat-label>Procedimento</mat-label>
+                                        <mat-select #additional formControlName="procedure{{ i }}" required>
                                             <mat-option value="Epilação"
                                                 *ngIf="professionalName.value === 'Renee'">Epilação</mat-option>
                                             <mat-option value="Plastica dos Pés"

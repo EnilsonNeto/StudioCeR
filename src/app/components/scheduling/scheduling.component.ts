@@ -110,15 +110,6 @@ export class SchedulingComponent {
     }
   }
 
-  getAvailableProceduresForProfessional(professional: string): string[] {
-    const availableProcedures: string[] = [];
-    const procedures = this.procedureProfessionals[professional];
-    if (procedures) {
-      availableProcedures.push(...procedures);
-    }
-    return availableProcedures;
-  }
-
   selecionarDia(dia: Date) {
     const mesAtual = this.dataAtual.getMonth();
     const anoAtual = this.dataAtual.getFullYear();
@@ -129,8 +120,6 @@ export class SchedulingComponent {
       this.diaSelecionado = dia;
     }
   }
-
-
 
   createDataUser(data: any) {
     this.formData = this.combinedFormGroup = Object.assign({}, this.formUser.value);
@@ -151,7 +140,7 @@ export class SchedulingComponent {
         name: this.formUser.value.name,
         surname: this.formUser.value.surname,
         number: this.formUser.value.number,
-        procedimento: this.formUser.value.process + ', ' + JSON.stringify(formattedProcedureValues)
+        procedimento: '"' + this.formUser.value.process +'"'+ + ', ' + JSON.stringify(formattedProcedureValues)
       },
     };
 
