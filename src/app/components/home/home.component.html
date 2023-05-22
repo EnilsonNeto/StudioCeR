@@ -4,24 +4,17 @@
         <div class="welcome">
             <h1>Seja Bem-Vindo!</h1>
         </div>
-
         <div class="boxInit">
             <div class="helloPeople">
-                <h4> Já nos conhece e deseja entrar em contato direto?<br>
+                <h4> Já nos conhece e deseja realizar seu agendamento?<br>
                     clique no botão abaixo.</h4>
-
-                <button mat-flat-button color="accent">
-                <a href="https://api.whatsapp.com/send?phone=558189731961&text=Ol%C3%A1,%20tudo%20bem?"
-                target="_blank">Entrar em Contato</a>
+                <button mat-flat-button color="accent" (click)="openDialogRecord()">
+                    Realizar Agendamento
                 </button>
             </div>
-
             <mat-divider [vertical]="true" color="accent"></mat-divider>
-
             <div class="carrosel">
-
                 <h2>Novidades</h2>
-
                 <carousel class="carousel">
                     <slide class="carousel-item active">
                         <img class="imgCarossel" src="../assets/images/image1.png" alt="Imagem 1">

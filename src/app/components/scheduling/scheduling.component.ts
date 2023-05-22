@@ -141,7 +141,7 @@ export class SchedulingComponent {
         name: this.formUser.value.name,
         surname: this.formUser.value.surname,
         number: this.formUser.value.number,
-        procedimento: '"' + this.formUser.value.process + '"' + + ', ' + JSON.stringify(formattedProcedureValues)
+        procedimento:'"' + this.formUser.value.process + '", ' + JSON.stringify(formattedProcedureValues)
       },
     };
 
@@ -162,7 +162,6 @@ export class SchedulingComponent {
           console.error(error);
         });
     }
-    console.log(selectedProcedureValues);
   }
 
   isInputEmpty(): boolean {
