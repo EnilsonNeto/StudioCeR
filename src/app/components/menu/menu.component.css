@@ -25,6 +25,10 @@ button{
     transition: 0.4s;
 }
 
+.navMenu2{
+    font-weight: bold;
+}
+
 .leftBox {
     display: flex;
     flex-direction: row;
