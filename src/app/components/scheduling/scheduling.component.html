@@ -79,18 +79,20 @@
                                         <mat-label>Procedimento</mat-label>
                                         <mat-select #additional formControlName="procedure{{ i }}" required>
                                             <mat-option value="Epilação"
-                                                *ngIf="professionalName.value === 'Renee'">Epilação</mat-option>
+                                                *ngIf="professionalName.value === 'Renee' && selectedProcedure !== 'Epilação'">Epilação</mat-option>
                                             <mat-option value="Plastica dos Pés"
-                                                *ngIf="professionalName.value === 'Renee'">Plastica dos Pés</mat-option>
+                                                *ngIf="professionalName.value === 'Renee' && selectedProcedure !== 'Plastica dos Pés'">Plastica
+                                                dos Pés</mat-option>
                                             <mat-option value="Sobrancelha"
-                                                *ngIf="professionalName.value === 'Camille'">Sobrancelha</mat-option>
+                                                *ngIf="professionalName.value === 'Camille' && selectedProcedure !== 'Sobrancelha'">Sobrancelha</mat-option>
                                             <mat-option value="Dermaplaning"
-                                                *ngIf="professionalName.value === 'Camille'">Dermaplaning</mat-option>
+                                                *ngIf="professionalName.value === 'Camille' && selectedProcedure !== 'Dermaplaning'">Dermaplaning</mat-option>
                                             <mat-option value="Lash Lifting"
-                                                *ngIf="professionalName.value === 'Camille'">Lash Lifting</mat-option>
+                                                *ngIf="professionalName.value === 'Camille' && selectedProcedure !== 'Lash Lifting'">Lash
+                                                Lifting</mat-option>
                                             <mat-option value="Extensão de cílios"
-                                                *ngIf="professionalName.value === 'Camille'">Extensão de
-                                                cílios</mat-option>
+                                                *ngIf="professionalName.value === 'Camille' && selectedProcedure !== 'Extensão de cílios'">Extensão
+                                                de cílios</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                     <button mat-icon-button color="primary" class="remove"
@@ -99,10 +101,11 @@
                                     </button>
                                 </div>
                                 <div class="boxin">
-                                    <button mat-icon-button class="adicionar" (click)="adicionarProcedimentoProfissional()">
-                                        <mat-icon class="add">add</mat-icon> 
+                                    <button mat-icon-button class="adicionar"
+                                        (click)="adicionarProcedimentoProfissional()">
+                                        <mat-icon class="add">add</mat-icon>
                                     </button>
-                                    <p class="text-color">Adicionar Mais Um Procedimento*</p> 
+                                    <p class="text-color">Adicionar Mais Um Procedimento*</p>
                                 </div>
                             </div>
 

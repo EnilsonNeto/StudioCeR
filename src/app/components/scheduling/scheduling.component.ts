@@ -34,6 +34,7 @@ export class SchedulingComponent {
   };
   selectedProfessionalValue: any;
   camilleLimited: any;
+  selectedProcedure: any;
 
   constructor(private http: HttpClient, public dialog: MatDialog) {
   }
@@ -105,8 +106,8 @@ export class SchedulingComponent {
     if (procedure) {
       return this.procedureProfessionals[procedure] || [];
     } else {
-      const selectedProcedure = this.formUser.get('process')?.value;
-      return this.procedureProfessionals[selectedProcedure] || [];
+      this.selectedProcedure = this.formUser.get('process')?.value;
+      return this.procedureProfessionals[this.selectedProcedure] || [];
     }
   }
 
@@ -140,7 +141,7 @@ export class SchedulingComponent {
         name: this.formUser.value.name,
         surname: this.formUser.value.surname,
         number: this.formUser.value.number,
-        procedimento: '"' + this.formUser.value.process +'"'+ + ', ' + JSON.stringify(formattedProcedureValues)
+        procedimento: '"' + this.formUser.value.process + '"' + + ', ' + JSON.stringify(formattedProcedureValues)
       },
     };
 
@@ -160,8 +161,8 @@ export class SchedulingComponent {
         }, error => {
           console.error(error);
         });
-      }
-      console.log(selectedProcedureValues);
+    }
+    console.log(selectedProcedureValues);
   }
 
   isInputEmpty(): boolean {
@@ -188,7 +189,7 @@ export class SchedulingComponent {
     }
   }
 
-  
+
 
   construirCalendario() {
     const ano = this.dataAtual.getFullYear();
