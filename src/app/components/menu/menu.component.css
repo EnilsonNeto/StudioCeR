@@ -17,6 +17,12 @@ button{
     background-color: transparent;
     color: #fff;
     border: 0;
+    font-weight: bold;
+}
+
+.navMenu button:hover{
+    color: #b4b1b1;
+    transition: 0.4s;
 }
 
 .leftBox {
