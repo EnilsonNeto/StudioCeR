@@ -20,11 +20,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { MatSelectModule } from '@angular/material/select';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { FooterComponent } from './components/footer/footer.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { SchedulingComponent } from './components/scheduling/scheduling.component';
+import { CamilleComponent } from './components/camille/camille.component';
+import { ReneeComponent } from './components/renee/renee.component';
+import { LoginComponent } from './login/login.component';
 
 import { FormsModule } from '@angular/forms';
 import { FlatpickrModule } from 'angularx-flatpickr';
@@ -33,7 +42,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { ModalSucessComponent } from './shared/modal-sucess/modal-sucess.component';
+import { environment } from 'src/environments/environment.prod';
+import { AuthService } from './shared/services/auth.service';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -44,7 +54,9 @@ registerLocaleData(localePt);
     MenuComponent,
     CoursesComponent,
     SchedulingComponent,
-    ModalSucessComponent
+    CamilleComponent,
+    ReneeComponent,
+    LoginComponent
   ],
   imports: [
     HttpClientModule,
@@ -70,8 +82,13 @@ registerLocaleData(localePt);
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
