@@ -49,7 +49,7 @@
                             </mat-form-field>
                             <mat-form-field>
                                 <input matInput name="number" placeholder="Telefone" formControlName="number"
-                                    maxlength="32" required>
+                                    maxlength="32" required mask="(00)0.0000-0000">
                             </mat-form-field>
                             <mat-form-field class="topMargin">
                                 <mat-label>Procedimento</mat-label>
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="btnGroup">
                                     <button class="bttn-Color button-align-right" id="userSubmit" mat-flat-button
-                                        mat-dialog-close color="accent" value="Sign Up" [disabled]="isInputEmpty()"
+                                        mat-dialog-close color="primary" value="Sign Up" [disabled]="isInputEmpty()"
                                         (click)="send(data.value, professionalName.value)">
                                         Concluir
                                     </button>

@@ -7,22 +7,12 @@
 
 img{
     width: 20rem;
-    margin-top: 0.2rem;
-    margin-bottom: 1rem;
-}
-
-.title{
-    font-family: 'Jost', sans-serif; 
+    margin-top: 1rem;
 }
 
 .text{
     margin-top: 2rem;
     font-family: 'Jost', sans-serif; 
-}
-
-.inputsConfiguration{
-    display: flex;
-    flex-direction: column;
 }
 
 .btn{
@@ -57,7 +47,7 @@ button{
 
     .card{
         margin-top: 4rem;
-        padding: 1rem;
+        padding: 0;
     }
 
     img{

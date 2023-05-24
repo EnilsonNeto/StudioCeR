@@ -6,6 +6,9 @@ import { SchedulingComponent } from './components/scheduling/scheduling.componen
 import { CamilleComponent } from './components/camille/camille.component';
 import { ReneeComponent } from './components/renee/renee.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AuthGuard } from './shared/guard/auth.guard';
+import { LoginGuard } from './shared/guard/login.guard';
 
 const routes: Routes = [
   {
@@ -28,14 +31,21 @@ const routes: Routes = [
   {
     path: 'camille',
     component: CamilleComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'renee',
     component: ReneeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

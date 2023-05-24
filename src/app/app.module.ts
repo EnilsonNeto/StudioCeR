@@ -19,6 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -44,6 +46,9 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { environment } from 'src/environments/environment.prod';
 import { AuthService } from './shared/services/auth.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoadingModalComponent } from './shared/loading-modal/loading-modal.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -56,7 +61,9 @@ registerLocaleData(localePt);
     SchedulingComponent,
     CamilleComponent,
     ReneeComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
+    LoadingModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -87,8 +94,14 @@ registerLocaleData(localePt);
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    MatSlideToggleModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    MatProgressSpinnerModule,
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    provideNgxMask(),],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
