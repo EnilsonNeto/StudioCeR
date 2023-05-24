@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
 })
 export class SchedulingComponent {
-  active = false;
+  active = True;
   today: Date = new Date();
   dataAtual: Date = new Date();
   diasCalendario: Date[] = [];
