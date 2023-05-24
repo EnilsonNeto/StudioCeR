@@ -13,7 +13,6 @@ export class MenuComponent {
   
   openDialogRecord() {
     const dialogRef = this.dialog.open(SchedulingComponent);
-    dialogRef.componentInstance.active = true;
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
