@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
 })
 export class SchedulingComponent {
+  active = true
   today: Date = new Date();
   dataAtual: Date = new Date();
   diasCalendario: Date[] = [];
@@ -123,7 +124,7 @@ export class SchedulingComponent {
   }
 
   createDataUser(data: any) {
-    this.formData = this.combinedFormGroup = Object.assign({}, this.formUser.value, { active: True });
+    this.formData = this.combinedFormGroup = Object.assign({}, this.formUser.value, { active: this.active });
 
     if (this.formData.invalid) {
       alert('Error: Invalid form data');
@@ -174,7 +175,7 @@ export class SchedulingComponent {
 
   send(data: any, professionalName: any) {
     this.nameFromTable = professionalName;
-    this.combinedFormGroup = Object.assign({}, this.formUser.value);
+    this.combinedFormGroup = Object.assign({}, this.formUser.value, { active: this.active });
     if (this.combinedFormGroup.invalid) {
       alert("Error: Invalid form data");
       return;
