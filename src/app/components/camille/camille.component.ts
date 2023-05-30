@@ -126,31 +126,50 @@ export class CamilleComponent {
   }
 
   disableUser(item: any) {
-    console.log(item.idHash);
-    const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille/${item.idHash}`;
-    const headers = this.autorization
-    const body = {
-      fields: {
-        active: false
-      }
-    };
+    Swal.fire({
+      title: 'Deseja Concluir o atendimento de ' + item.name + '?',
+      showCancelButton: true,
+      confirmButtonText: 'Concluir',
+      confirmButtonColor: '#0d9f00',
+      cancelButtonColor: '#d20000'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille/${item.idHash}`;
+        const headers = this.autorization
+        const body = {
+          fields: {
+            active: false
+          }
+        };
 
-    this.http.patch(url, body, { headers }).subscribe(() => {
-      item.active = false;
-    });
+        this.http.patch(url, body, { headers }).subscribe(() => {
+          item.active = false;
+        });
+      }
+    })
   }
 
   enableUser(item: any) {
-    const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille/${item.idHash}`;
-    const headers = this.autorization
-    const body = {
-      fields: {
-        active: true
-      }
-    };
+    Swal.fire({
+      title: 'Deseja Retornar ' + item.name + ' para lista de atendimentos?',
+      showCancelButton: true,
+      confirmButtonText: 'Retornar',
+      confirmButtonColor: '#0d9f00',
+      cancelButtonColor: '#d20000'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille/${item.idHash}`;
+        const headers = this.autorization
+        const body = {
+          fields: {
+            active: true
+          }
+        };
 
-    this.http.patch(url, body, { headers }).subscribe(() => {
-      item.active = true;
+        this.http.patch(url, body, { headers }).subscribe(() => {
+          item.active = true;
+        });
+      }
     });
   }
 

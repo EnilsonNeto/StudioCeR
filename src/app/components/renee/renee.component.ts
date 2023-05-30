@@ -39,7 +39,7 @@ export class ReneeComponent {
 
   openWhatsApp(number: string) {
     const phoneNumber = number.replace(/\s/g, '');
-    const countryCode = '+55'; 
+    const countryCode = '+55';
     const formattedNumber = phoneNumber.startsWith(countryCode)
       ? phoneNumber
       : countryCode + phoneNumber;
@@ -79,13 +79,13 @@ export class ReneeComponent {
       this.filter('');
     }
   }
-  
+
   filter(name: string) {
     const lowercaseName = name.toLowerCase();
     const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Renee?filterByFormula=OR(FIND('${lowercaseName}', LOWER({Name})), FIND('${lowercaseName}', LOWER({Surname})))`;
     const headers = this.autorization
     const params = {
-      fields: ['name', 'surname', 'data' , 'number', 'active', 'procedimento', 'idHash']
+      fields: ['name', 'surname', 'data', 'number', 'active', 'procedimento', 'idHash']
     };
     this.http.get(url, { headers, params }).subscribe(
       (data: any) => {
@@ -120,31 +120,50 @@ export class ReneeComponent {
   }
 
   disableUser(item: any) {
-    console.log(item.idHash);
-    const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Renee/${item.idHash}`;
-    const headers = this.autorization
-    const body = {
-      fields: {
-        active: false
-      }
-    };
+    Swal.fire({
+      title: 'Deseja Concluir o atendimento de ' + item.name + '?',
+      showCancelButton: true,
+      confirmButtonText: 'Concluir',
+      confirmButtonColor: '#0d9f00',
+      cancelButtonColor: '#d20000'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Renee/${item.idHash}`;
+        const headers = this.autorization
+        const body = {
+          fields: {
+            active: false
+          }
+        };
 
-    this.http.patch(url, body, { headers }).subscribe(() => {
-      item.active = false;
+        this.http.patch(url, body, { headers }).subscribe(() => {
+          item.active = false;
+        });
+      }
     });
   }
 
   enableUser(item: any) {
-    const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Renee/${item.idHash}`;
-    const headers = this.autorization
-    const body = {
-      fields: {
-        active: true
-      }
-    };
+    Swal.fire({
+      title: 'Deseja Retornar ' + item.name + ' para lista de atendimentos?',
+      showCancelButton: true,
+      confirmButtonText: 'Retornar',
+      confirmButtonColor: '#0d9f00',
+      cancelButtonColor: '#d20000'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Renee/${item.idHash}`;
+        const headers = this.autorization
+        const body = {
+          fields: {
+            active: true
+          }
+        };
 
-    this.http.patch(url, body, { headers }).subscribe(() => {
-      item.active = true;
+        this.http.patch(url, body, { headers }).subscribe(() => {
+          item.active = true;
+        });
+      }
     });
   }
 }
