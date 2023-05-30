@@ -46,6 +46,12 @@ export class ReneeComponent {
     window.open(`https://wa.me/${formattedNumber}`, '_blank');
   }
 
+  openCallApp(number: string) {
+    const phoneNumber = number.replace(/\s/g, '');
+    const formattedNumber = `tel:${phoneNumber}`;
+    window.open(formattedNumber, '_blank');
+  }
+
   getItemsFromAirtable() {
     const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Renee`;
     const headers = this.autorization

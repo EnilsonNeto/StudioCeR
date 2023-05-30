@@ -102,6 +102,11 @@
     margin-left: 15px;
     margin-top: 5px;
   }
+
+  .whats{
+    border: none;
+    background-color: transparent;
+  }
   
   .card {
     display: flex;
