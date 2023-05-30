@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, LOCALE_ID } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,7 +20,7 @@ export class SchedulingComponent {
   formUser!: FormGroup;
   formData: any;
   combinedFormGroup: any;
-  autorization = { 'Authorization': 'Bearer key5fJDD8QhJcYtU1' };
+  autorization = { 'Authorization': 'Bearer keyoERIST24uc8THO' };
   selectedOption: any;
   disabled: boolean = false;
   selectedProcedures: string[] = [];
@@ -149,7 +149,7 @@ export class SchedulingComponent {
 
     if (this.formUser.value.professional === 'Camille') {
       const headers = this.autorization;
-      this.http.post('https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille', newUser, { headers })
+      this.http.post('https://api.airtable.com/v0/appK3LqNORgFrRe9i/Camille', newUser, { headers })
         .subscribe(response => {
           console.log(response);
         }, error => {
@@ -157,7 +157,7 @@ export class SchedulingComponent {
         });
     } else if (this.formUser.value.professional === 'Renee') {
       const headers = this.autorization;
-      this.http.post('https://api.airtable.com/v0/app5qbSshO2ZFVei1/Renee', newUser, { headers })
+      this.http.post('https://api.airtable.com/v0/appK3LqNORgFrRe9i/Renee', newUser, { headers })
         .subscribe(response => {
           console.log(response);
         }, error => {
@@ -189,9 +189,6 @@ export class SchedulingComponent {
       })
     }
   }
-
-
-
   construirCalendario() {
     const ano = this.dataAtual.getFullYear();
     const mes = this.dataAtual.getMonth();

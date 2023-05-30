@@ -21,7 +21,7 @@ export class CamilleComponent {
   listActive: boolean | undefined = true;
   open = true;
   emailToPhysiotherapist: any;
-  autorization = { 'Authorization': 'Bearer key5fJDD8QhJcYtU1' };
+  autorization = { 'Authorization': 'Bearer keyoERIST24uc8THO' };
   ascendingOrder: boolean = true;
   descendingOrder: boolean = false;
   dialogLoad: any;
@@ -59,7 +59,7 @@ export class CamilleComponent {
 
   getItemsFromAirtable() {
     this.loadingModal();
-    const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille`;
+    const url = `https://api.airtable.com/v0/appK3LqNORgFrRe9i/Camille`;
     const headers = this.autorization;
     const params = {
       fields: ['name', 'surname', 'data', 'number', 'active', 'procedimento', 'idHash']
@@ -96,7 +96,7 @@ export class CamilleComponent {
 
   filter(name: string) {
     const lowercaseName = name.toLowerCase();
-    const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille?filterByFormula=OR(FIND('${lowercaseName}', LOWER({Name})), FIND('${lowercaseName}', LOWER({Surname})))`;
+    const url = `https://api.airtable.com/v0/appK3LqNORgFrRe9i/Camille?filterByFormula=OR(FIND('${lowercaseName}', LOWER({Name})), FIND('${lowercaseName}', LOWER({Surname})))`;
     const headers = this.autorization
     const params = {
       fields: ['name', 'surname', 'data', 'number', 'active', 'procedimento', 'idHash']
@@ -142,7 +142,7 @@ export class CamilleComponent {
       cancelButtonColor: '#d20000'
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille/${item.idHash}`;
+        const url = `https://api.airtable.com/v0/appK3LqNORgFrRe9i/Camille/${item.idHash}`;
         const headers = this.autorization
         const body = {
           fields: {
@@ -166,7 +166,7 @@ export class CamilleComponent {
       cancelButtonColor: '#d20000'
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille/${item.idHash}`;
+        const url = `https://api.airtable.com/v0/appK3LqNORgFrRe9i/Camille/${item.idHash}`;
         const headers = this.autorization
         const body = {
           fields: {

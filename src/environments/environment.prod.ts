@@ -1,13 +1,12 @@
 export const environment = {
     production: false,
     firebase: {
-        apiKey: "AIzaSyBi-OvLtR9y0CJK51QAOd76zwBGYaolWGg",
-        authDomain: "studiocer-ff672.firebaseapp.com",
-        databaseURL: "https://studiocer-ff672-default-rtdb.firebaseio.com",
-        projectId: "studiocer-ff672",
-        storageBucket: "studiocer-ff672.appspot.com",
-        messagingSenderId: "452969606868",
-        appId: "1:452969606868:web:3e01ec458f42645b5f1541",
-        measurementId: "G-SZJVR8LVYZ"
+        apiKey: "AIzaSyDy8XPg8QJJaC1WPkOxZfUK6YpzUK6SFLk",
+        authDomain: "projectstudio-d6eab.firebaseapp.com",
+        databaseURL: "https://projectstudio-d6eab-default-rtdb.firebaseio.com",
+        projectId: "projectstudio-d6eab",
+        storageBucket: "projectstudio-d6eab.appspot.com",
+        messagingSenderId: "437146633948",
+        appId: "1:437146633948:web:1a78cba9b64d305e9c5619"
     }
 };

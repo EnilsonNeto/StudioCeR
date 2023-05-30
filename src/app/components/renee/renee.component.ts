@@ -19,7 +19,7 @@ export class ReneeComponent {
   listActive: boolean | undefined = true;
   forUser: any;
   open = true;
-  autorization = { 'Authorization': 'Bearer key5fJDD8QhJcYtU1' };
+  autorization = { 'Authorization': 'Bearer keyoERIST24uc8THO' };
   ascendingOrder: boolean = true;
   descendingOrder: boolean = false;
 
@@ -53,7 +53,7 @@ export class ReneeComponent {
   }
 
   getItemsFromAirtable() {
-    const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Renee`;
+    const url = `https://api.airtable.com/v0/appK3LqNORgFrRe9i/Renee`;
     const headers = this.autorization
     const params = {
       fields: ['name', 'surname', 'data', 'number', 'active', 'procedimento', 'idHash']
@@ -89,7 +89,7 @@ export class ReneeComponent {
 
   filter(name: string) {
     const lowercaseName = name.toLowerCase();
-    const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Renee?filterByFormula=OR(FIND('${lowercaseName}', LOWER({Name})), FIND('${lowercaseName}', LOWER({Surname})))`;
+    const url = `https://api.airtable.com/v0/appK3LqNORgFrRe9i/Renee?filterByFormula=OR(FIND('${lowercaseName}', LOWER({Name})), FIND('${lowercaseName}', LOWER({Surname})))`;
     const headers = this.autorization
     const params = {
       fields: ['name', 'surname', 'data', 'number', 'active', 'procedimento', 'idHash']
@@ -135,7 +135,7 @@ export class ReneeComponent {
       cancelButtonColor: '#d20000'
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Renee/${item.idHash}`;
+        const url = `https://api.airtable.com/v0/appK3LqNORgFrRe9i/Renee/${item.idHash}`;
         const headers = this.autorization
         const body = {
           fields: {
@@ -159,7 +159,7 @@ export class ReneeComponent {
       cancelButtonColor: '#d20000'
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Renee/${item.idHash}`;
+        const url = `https://api.airtable.com/v0/appK3LqNORgFrRe9i/Renee/${item.idHash}`;
         const headers = this.autorization
         const body = {
           fields: {
