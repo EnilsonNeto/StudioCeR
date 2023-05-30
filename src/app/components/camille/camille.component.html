@@ -53,7 +53,10 @@
                   <mat-icon class="green" *ngIf="item.active === undefined">check</mat-icon>
                 </td>
                 <td>
-                  <button mat-icon-button (click)="openWhatsApp(item.number)">
+                  <button mat-icon-button class="whats" (click)="openWhatsApp(item.number)">
+                    <i class="pi pi-whatsapp" style="font-size: 1.5rem; color: #0bb00b;"></i>   
+                  </button>
+                  <button mat-icon-button (click)="openCallApp(item.number)">
                     <mat-icon class="green">phone</mat-icon>
                   </button>
                 </td>

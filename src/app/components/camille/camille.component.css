@@ -54,7 +54,7 @@
 }
 
 .green{
-  color: rgb(11, 176, 11);
+  color: #0bb00b;
 }
 
 .menu{
@@ -67,6 +67,11 @@
   overflow-x: hidden;
   color: #000;
   margin-top: 80px;
+}
+
+.whats{
+  border: none;
+  background-color: transparent;
 }
 
 .table td, .table th {

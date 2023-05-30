@@ -34,8 +34,8 @@ export class CamilleComponent {
     public dialog: MatDialog,
     public afAuth: AngularFireAuth,
     public afs: AngularFirestore,
-    private db: AngularFireDatabase,) {
-
+    private db: AngularFireDatabase,
+    ) {
   }
 
   ngOnInit(): void {
@@ -49,6 +49,12 @@ export class CamilleComponent {
       ? phoneNumber
       : countryCode + phoneNumber;
     window.open(`https://wa.me/${formattedNumber}`, '_blank');
+  }
+
+  openCallApp(number: string) {
+    const phoneNumber = number.replace(/\s/g, '');
+    const formattedNumber = `tel:${phoneNumber}`;
+    window.open(formattedNumber, '_blank');
   }
 
   getItemsFromAirtable() {
