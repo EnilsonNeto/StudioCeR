@@ -55,6 +55,7 @@ export class ReneeComponent {
 
     this.http.get(url, { headers, params }).subscribe((data: any) => {
       this.items = data.records.map((record: any) => record.fields);
+      this.sortClients();
     });
   }
 

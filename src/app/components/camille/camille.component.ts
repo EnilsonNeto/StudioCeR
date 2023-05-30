@@ -39,7 +39,7 @@ export class CamilleComponent {
   }
 
   ngOnInit(): void {
-    this.getItemsFromAirtable()
+    this.getItemsFromAirtable();
   }
 
   openWhatsApp(number: string) {
@@ -54,13 +54,14 @@ export class CamilleComponent {
   getItemsFromAirtable() {
     this.loadingModal();
     const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille`;
-    const headers = this.autorization
+    const headers = this.autorization;
     const params = {
       fields: ['name', 'surname', 'data', 'number', 'active', 'procedimento', 'idHash']
     };
-
+  
     this.http.get(url, { headers, params }).subscribe((data: any) => {
       this.items = data.records.map((record: any) => record.fields);
+      this.sortClients();
     });
   }
 
