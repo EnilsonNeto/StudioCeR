@@ -90,6 +90,7 @@ export class CamilleComponent {
   onInputChange(value: string) {
     if (value === '') {
       this.filter('');
+      this.getItemsFromAirtable();
     }
   }
 
