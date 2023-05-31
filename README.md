@@ -9,14 +9,13 @@ O StudioC&R é um projeto que desenvolvi do zero com o objetivo de aplicar e apr
 ## Tecnologias Utilizadas
 
 - Angular 15+
+- TypeScript
+- HTML5
+- SCSS
+- Boostrap 4
 - API Rest
 - Airtable
 - Firebase
-- HTML 5
-- CSS3
-- SCSS
-- TypeScript
-- Boostrap 4
 
 ## Como utilizar
 
